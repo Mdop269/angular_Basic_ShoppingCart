@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+}
+
+.icons-space {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.icons-space > fa-icon {
+  margin: 0 10px;
+}
+
+
+.text-danger{
+  color: red;
+}

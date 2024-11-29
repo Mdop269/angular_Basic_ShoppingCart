@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="filters">
+      <!-- whenever i click on any button the value will be changed in the component function so it have to iterate through all 
+       as angular will know when its get changed so it will rerender all  -->
+      <a class="button" (click)="filter=''">All</a>
+      <a class="button" (click)="filter='Android'">Android </a>
+      <a class="button" (click)="filter='Ios'">Ios</a>
+    </div>
+    
+
+    <ul class="products">
+        <li class="product-item" >
+          <!-- in this we are showing all the product depending on the function  -->
+        @for (product of getFilteredProducts(); track product.id) {   
+          <!-- app product detail is selector of the component which we are trying to call  -->
+           <!-- in square bracket binding the variable name is of the child component which we are trying to send the data  this is input means we are sending data to another component-->
+            <!-- in curly braces the value is from the for loop which helps us iterate through each product from the function -->
+             <!-- (buy) it is a event which is a eventemitter variable which i have given in product detail its help in changing  data of parent component  
+              so it will return the value which is being emitted and it will give the product of which it got clicked -->
+          <app-product-details [product]="product" (buy)="addToCart(product)"></app-product-details>
+        }
+        </li>
+    </ul>
+    
+</div>

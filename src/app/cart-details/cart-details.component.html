@@ -1,0 +1,28 @@
+@if (cartForQuantity) {
+  <ul class="products">
+    <li class="product-item" >
+    @for (cart of cartForQuantity; track cart.id) {   
+    <div class="product">
+        <div class="product-details">
+          <img [src]="cart.imageName" [alt]="cart.imageName" />   
+          <div class="cart-info">
+            <div class="name red">{{ cart.name }}</div>
+            <div class="description">{{ cart.description }}</div>
+            <div class="category">Part Type: {{ cart.category}}</div>
+          </div>
+        </div>
+        <div class="price"> 
+          <div>$ {{ cart.price * cart.quantity}}</div>
+          <div>
+            <div class="quantity">
+              <a class="button" (click)="minus(cart)">-<i class="fa fa-minus"></i></a>
+              <span class="quantityValue">{{cart.quantity}}</span>
+              <a class="button" (click)="plus(cart)">+<i class="fa fa-plus"></i> </a> 
+            </div>    
+          </div>
+        </div>
+    </div>
+    }
+      </li>
+    </ul> 
+}

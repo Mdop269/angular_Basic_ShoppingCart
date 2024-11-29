@@ -1,0 +1,99 @@
+<form class="example-form" [formGroup]="addNewProduct" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="description-full-width">
+      <mat-label>description</mat-label>
+      <!-- errorStateMatcher in detecting error whenever we change the value if we dont use this it wont change to instantly  -->
+      <input type="text" matInput formControlName="description" [errorStateMatcher]="matcher"
+            placeholder="Eg: ONEPLUS NORD is the third best phone in the world">
+      <mat-hint>Errors removed instantly!</mat-hint>
+      <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+      @if (addNewProduct.get('description')?.hasError('required') && !addNewProduct.get('description')?.hasError('minlength')) {
+        <mat-error>Description is <strong>required</strong></mat-error>
+      }
+      <!-- if the validator is not minimum then it will run this -->
+      @if (addNewProduct.get('description')?.hasError('minlength')) {
+        <mat-error>Description length should be minimum <strong>15</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="name-full-width">
+      <mat-label>Name</mat-label>
+      <!-- errorStateMatcher in detecting error whenever we change the value if we dont use this it wont change to instantly  -->
+      <input type="text" matInput formControlName="name" [errorStateMatcher]="matcher"
+            placeholder="Eg: Oneplus Nord Buds 2">
+      <mat-hint>Errors removed instantly!</mat-hint>
+      <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+      @if (addNewProduct.get('name')?.hasError('required') && !addNewProduct.get('name')?.hasError('minlength')) {
+        <mat-error>Name is <strong>required</strong></mat-error>
+      }
+      <!-- if the validator is not minimum then it will run this -->
+      @if (addNewProduct.get('name')?.hasError('minlength')) {
+        <mat-error>Name length should be minimum <strong>3</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="ImageName-full-width">
+      <mat-label>ImageName</mat-label>
+      <!-- errorStateMatcher in detecting error whenever we change the value if we dont use this it wont change to instantly  -->
+      <input type="text" matInput formControlName="imageName" [errorStateMatcher]="matcher"
+            placeholder="Eg: image/oneplus nord.jpg">
+      <mat-hint>Errors removed instantly!</mat-hint>
+      <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+      @if (addNewProduct.get('imageName')?.hasError('required') && !addNewProduct.get('imageName')?.hasError('minlength')) {
+        <mat-error>ImageName is <strong>required</strong></mat-error>
+      }
+      <!-- if the validator is not minimum then it will run this -->
+      @if (addNewProduct.get('imageName')?.hasError('minlength')) {
+        <mat-error>ImageName length should be minimum <strong>5</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="Android">Android</mat-option>
+        <mat-option value="Ios">Ios</mat-option>
+        <!-- with this it will check if the category is choosen or not if it is then it will give the value -->
+      </mat-select>
+      @if (addNewProduct.get('category')?.hasError('required')) {
+        <mat-error>Category is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="price-full-width">
+      <mat-label>price</mat-label>
+      <!-- errorStateMatcher in detecting error whenever we change the value if we dont use this it wont change to instantly  -->
+      <input type="number" matInput formControlName="price" [errorStateMatcher]="matcher"
+            placeholder="Eg: 200">
+      <mat-hint>Errors removed instantly!</mat-hint>
+      <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+      @if (addNewProduct.get('price')?.hasError('required') && !addNewProduct.get('price')?.hasError('min')) {
+        <mat-error>price is <strong>required</strong></mat-error>
+      }
+      <!-- if the validator is not minimum then it will run this -->
+      @if (addNewProduct.get('price')?.hasError('min')) {
+        <mat-error>price should be minimum <strong>10</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="quantityShouldBe-full-width">
+      <mat-label>quantityShouldBe</mat-label>
+      <!-- errorStateMatcher in detecting error whenever we change the value if we dont use this it wont change to instantly  -->
+      <input type="number" matInput formControlName="quantityShouldBe" [errorStateMatcher]="matcher"
+            placeholder="Eg: 200">
+      <mat-hint>Errors removed instantly!</mat-hint>
+      <!-- it check if the value is null or not && it checks if the validator minimum doesnt huave error like it is not -1 ) -->
+      @if (addNewProduct.get('quantityShouldBe')?.hasError('required') && !addNewProduct.get('quantityShouldBe')?.hasError('min')) {
+        <mat-error>quantityShouldBe is <strong>required</strong></mat-error>
+      }
+      <!-- if the validator is not minimum then it will run this -->
+      @if (addNewProduct.get('quantityShouldBe')?.hasError('min')) {
+        <mat-error>quantityShouldBe should be minimum <strong>1</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <button type="submit">
+      Submit
+    </button>
+
+</form>

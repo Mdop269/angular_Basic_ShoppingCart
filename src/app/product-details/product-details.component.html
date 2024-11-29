@@ -1,0 +1,19 @@
+<div class="product">
+    <div class="product-details">
+      <img [src]="product.imageName" [alt]="product.imageName" />
+      <div class="product-info">
+        <div class="name red">{{ product.name }}</div>
+        <div class="description">{{ product.description }}</div>
+        <div class="category">Part Type: {{ product.category}}</div>
+      </div>
+    </div>
+    <div class="price"> 
+      <div>$ {{ product.price}}</div>
+      <div>
+        <!-- if someone click on the buy button it will run this function as you can see 
+         we are passing the whole product of that to the function so we know which button we have clicked -->
+        <button class="cta" (click)="buyButtonClicked()">Buy</button>
+      </div>
+    </div>
+</div>
+
